@@ -1,0 +1,75 @@
+body {
+  margin: 0;
+  background: black;
+  overflow: hidden;
+  font-family: 'Noto Sans TC', sans-serif;
+  color: white;
+}
+
+#progressBar {
+  position: fixed; top: 0; left: 0; height: 15px;
+  background-color: rgba(255, 255, 255, 0.8);
+  width: 0%; z-index: 999;
+}
+
+@keyframes shrink {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+
+#slideshow {
+  position: relative; width: 100vw; height: 100vh;
+  overflow: hidden; cursor: pointer;
+}
+
+#slideshow img {
+  position: absolute; width: 100%; height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  /* --- 核心修改：移除 opacity 的過渡動畫 --- */
+  transition: filter 0.4s ease-in-out;
+  z-index: 1;
+}
+
+#slideshow img.active {
+  opacity: 1;
+}
+
+#slideshow.paused img.active {
+  filter: brightness(50%);
+}
+
+#pauseOverlay {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%); z-index: 50;
+  font-size: 6rem; color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(0, 0, 0, 0.4); padding: 20px 35px;
+  border-radius: 20px; opacity: 0; pointer-events: none;
+  transition: opacity 0.4s ease-in-out;
+}
+
+#slideshow.paused #pauseOverlay {
+  opacity: 1;
+}
+
+#caption {
+  position: absolute; bottom: 10%; width: 100%;
+  text-align: center; font-size: 5rem; font-weight: bold;
+  text-shadow: 0 0 15px rgba(0,0,0,0.8); z-index: 5;
+}
+
+#controls {
+  position: fixed; right: 20px; bottom: 20px;
+  display: flex; gap: 10px; z-index: 100;
+  cursor: default;
+}
+
+#controls button {
+  background: rgba(255,255,255,0.1); border: 2px solid white;
+  color: white; font-size: 1.5rem; padding: 10px 15px;
+  border-radius: 50%; cursor: pointer; transition: 0.3s;
+}
+
+#controls button:hover {
+  background: white; color: black;
+}

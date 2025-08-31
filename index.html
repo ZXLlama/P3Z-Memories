@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>互動式幻燈片播放器</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="progressBar"></div>
+
+  <!-- 幻燈片容器 -->
+  <div id="slideshow">
+    <!-- 新增：暫停狀態的覆蓋層 -->
+    <div id="pauseOverlay">▶</div> 
+    
+    <img id="slide-img" src="" alt="slideshow">
+    <div id="caption"></div>
+  </div>
+
+  <!-- 控制按鈕 -->
+  <div id="controls">
+    <button id="prev">◁</button>
+    <button id="playPause">❚❚</button>
+    <button id="next">▷</button>
+  </div>
+
+  <!-- 音樂播放器 -->
+  <audio id="bg-music" autoplay></audio>
+
+  <script src="playlist.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
